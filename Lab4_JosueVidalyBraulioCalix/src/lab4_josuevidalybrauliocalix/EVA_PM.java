@@ -16,8 +16,9 @@ public class EVA_PM extends Evas {
     }
 
     @Override
-    public void moverse() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean moverse(int x, int y, int nx, int ny) {
+        boolean valido = true;
+        return valido;
     }
 
     @Override

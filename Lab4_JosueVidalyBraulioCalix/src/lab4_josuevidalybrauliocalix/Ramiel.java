@@ -17,10 +17,32 @@ public class Ramiel extends Angel {
 
     @Override
     public boolean moverse(int x, int y, int nx, int ny) {
-        boolean valido=false;
-       
-       
-        
+        boolean valido = false;
+        if (nx == x + 1 && ny == y + 1) {
+            valido = true;
+        }
+        if (nx == x - 1 && ny == y - 1) {
+            valido = true;
+        }
+        if (nx == x + 1 && ny == y - 1) {
+            valido = true;
+        }
+        if (nx == x - 1 && ny == y + 1) {
+            valido = true;
+        }
+        if (nx == x + 1) {
+            valido = true;
+        }
+        if (nx == x - 1) {
+            valido = true;
+        }
+        if (ny == y + 1) {
+            valido = true;
+        }
+        if (ny == y - 1) {
+            valido = true;
+        }
+        return valido;
     }
 
     @Override
