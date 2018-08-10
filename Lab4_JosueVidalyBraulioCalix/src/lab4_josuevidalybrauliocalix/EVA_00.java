@@ -19,9 +19,9 @@ public class EVA_00 extends Evas {
     }
 
     @Override
-    public boolean moverse(int x,int y,int nx,int ny) {
-        boolean valido=false;
-       if (nx == x + 1 && ny == y + 1) {
+    public boolean moverse(int x, int y, int nx, int ny) {
+        boolean valido = false;
+        if (nx == x + 1 && ny == y + 1) {
             valido = true;
         }
         if (nx == x - 1 && ny == y - 1) {
@@ -49,7 +49,7 @@ public class EVA_00 extends Evas {
     }
 
     @Override
-    public void atacar() {
+    public boolean atacar(int x, int y, int ax, int ay) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

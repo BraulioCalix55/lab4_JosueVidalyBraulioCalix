@@ -20,6 +20,7 @@ public class Lab4_JosueVidalyBraulioCalix {
      */
     static Scanner lea = new Scanner(System.in);
     static Ancestral An;
+
     public static void main(String[] args) {
         // TODO code application logic here
 //CRUD ( CREATE , READ , UPDATE ,DELETE ) 
@@ -234,35 +235,35 @@ public class Lab4_JosueVidalyBraulioCalix {
         System.out.println("que desea hacer \n1)Moverse\n2)Atacar");
         int trab = lea.nextInt();
         System.out.println("selecciono Moverse");
-        
+
         if (trab == 1) {//MOVERSE
             if (Mat[x][y].equals("EV0")) {
-                An=new EVA_00();
+                An = new EVA_00();
                 System.out.println("ingrese la x a la  que lo quiere mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
                     System.out.println("numero invalido\ningrese otro");
                     xn = lea.nextInt();
                 }
-                
+
                 System.out.println("ingrese la y a la  que lo quiere mover");
                 int yn = lea.nextInt();
                 while (yn < 0 || yn > 9) {
                     System.out.println("numero invalido\ningrese otro");
                     yn = lea.nextInt();
                 }
-                boolean cosa=validarposi(xn, yn, Mat);
-                
-                if (cosa==true) {
-                   An.moverse(x, y, xn, yn);
+                boolean cosa = validarposi(xn, yn, Mat);
+
+                if (cosa == true) {
+                    An.moverse(x, y, xn, yn);
                 }
-                
+
                 //poner metodo
                 //poner metodo
                 //poner metodo
                 //poner metodo
             } else if (Mat[x][y].equals("EV1")) {
-                An=new EVA_01();
+                An = new EVA_01();
                 System.out.println("ingrese la x al que se va a mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
@@ -275,9 +276,9 @@ public class Lab4_JosueVidalyBraulioCalix {
                     System.out.println("numero invalido\ningrese otro");
                     yn = lea.nextInt();
                 }
-                boolean cosa=validarposi(xn, yn, Mat);
-                if (cosa==true) {
-                    Mat[x][y]="   ";
+                boolean cosa = validarposi(xn, yn, Mat);
+                if (cosa == true) {
+                    Mat[x][y] = "   ";
                     An.moverse(x, y, xn, yn);
                 }
                 //poner metodo
@@ -285,7 +286,7 @@ public class Lab4_JosueVidalyBraulioCalix {
                 //poner metodo
                 //poner metodo
             } else if (Mat[x][y].equals("EV2")) {
-                An=new EVA_02();
+                An = new EVA_02();
                 System.out.println("ingrese la x al que se va a mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
@@ -298,9 +299,9 @@ public class Lab4_JosueVidalyBraulioCalix {
                     System.out.println("numero invalido\ningrese otro");
                     yn = lea.nextInt();
                 }
-                boolean cosa=validarposi(xn, yn, Mat);
-                if (cosa==true) {
-                    Mat[x][y]="   ";
+                boolean cosa = validarposi(xn, yn, Mat);
+                if (cosa == true) {
+                    Mat[x][y] = "   ";
                     An.moverse(x, y, xn, yn);
                 }
                 //poner metodo
@@ -308,6 +309,7 @@ public class Lab4_JosueVidalyBraulioCalix {
                 //poner metodo
                 //poner metodo
             } else if (Mat[x][y].equals(" R ")) {
+                An = new Ramiel();
                 System.out.println("ingrese la x  al que se va a mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
@@ -320,16 +322,18 @@ public class Lab4_JosueVidalyBraulioCalix {
                     System.out.println("numero invalido\ningrese otro");
                     yn = lea.nextInt();
                 }
-                boolean cosa=validarposi(xn, yn, Mat);
-                if (cosa==true) {
-                    Mat[x][y]="   ";
-                    Mat[xn][yn]=" R ";
+                boolean cosa = validarposi(xn, yn, Mat);
+                if (cosa == true) {
+                    Mat[x][y] = "   ";
+                    An.moverse(x, y, xn, yn);
+
                 }
                 //poner metodo
                 //poner metodo
                 //poner metodo
                 //poner metodo
             } else if (Mat[x][y].equals(" S ")) {
+                An = new Sachiel();
                 System.out.println("ingrese la x  al que se va a mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
@@ -346,12 +350,14 @@ public class Lab4_JosueVidalyBraulioCalix {
                 //poner metodo
                 //poner metodo
                 //poner metodo
-                boolean cosa=validarposi(xn, yn, Mat);
-                if (cosa==true) {
-                    Mat[x][y]="   ";
-                    Mat[xn][yn]=" S ";
+                boolean cosa = validarposi(xn, yn, Mat);
+                if (cosa == true) {
+                    Mat[x][y] = "   ";
+                    An.moverse(x, y, xn, yn);
+
                 }
             } else if (Mat[x][y].equals(" Z ")) {
+                An = new Zeruel();
                 System.out.println("ingrese la x  al que se va a mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
@@ -364,9 +370,10 @@ public class Lab4_JosueVidalyBraulioCalix {
                     System.out.println("numero invalido\ningrese otro");
                     yn = lea.nextInt();
                 }
-                boolean cosa=validarposi(xn, yn, Mat);
-                if (cosa==true) {
-                    
+                boolean cosa = validarposi(xn, yn, Mat);
+                if (cosa == true) {
+                    Mat[x][y] = "   ";
+                    An.moverse(x, y, xn, yn);
                 }
             }
         } else {//ATACAR

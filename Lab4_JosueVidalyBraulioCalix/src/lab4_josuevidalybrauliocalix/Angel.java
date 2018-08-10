@@ -99,7 +99,7 @@ public class Angel extends Ancestral {
     }
 
     @Override
-    public void atacar() {
+    public boolean atacar(int x,int y,int ax,int ay) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
