@@ -9,7 +9,8 @@ package lab4_josuevidalybrauliocalix;
  *
  * @author josue
  */
-public class Evas extends Ancestral{
+public class Evas extends Ancestral {
+
     private String color;
     private int produccion;
     private int altura;
@@ -110,7 +111,7 @@ public class Evas extends Ancestral{
     }
 
     @Override
-    public void moverse() {
+    public boolean moverse(int x, int y, int nx, int ny) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -118,5 +119,5 @@ public class Evas extends Ancestral{
     public void atacar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

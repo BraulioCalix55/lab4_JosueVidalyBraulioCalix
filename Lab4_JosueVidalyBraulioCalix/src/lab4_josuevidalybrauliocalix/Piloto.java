@@ -9,7 +9,8 @@ package lab4_josuevidalybrauliocalix;
  *
  * @author josue
  */
-public class Piloto extends Ancestral{
+public class Piloto extends Ancestral {
+
     private String nombre;
     private int edad;
     private String familiar;
@@ -90,7 +91,7 @@ public class Piloto extends Ancestral{
     }
 
     @Override
-    public void moverse() {
+    public boolean moverse(int x, int y, int nx, int ny) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -98,5 +99,5 @@ public class Piloto extends Ancestral{
     public void atacar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
