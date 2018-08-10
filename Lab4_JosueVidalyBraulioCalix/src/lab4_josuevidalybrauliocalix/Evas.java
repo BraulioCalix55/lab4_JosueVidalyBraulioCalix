@@ -21,6 +21,9 @@ public class Evas extends Ancestral {
     private int codigo;
     private int dano;
 
+    public Evas() {
+    }
+
     public Evas(String color, int produccion, int altura, String alma, int ojos, String pais, Piloto piloto, int codigo, int dano) {
         this.color = color;
         this.produccion = produccion;

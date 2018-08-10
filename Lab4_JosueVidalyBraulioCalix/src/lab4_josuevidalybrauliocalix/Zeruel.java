@@ -15,6 +15,9 @@ public class Zeruel extends Angel {
         super(color, descripcion, sangre, fecha, nombre, volar, potencia);
     }
 
+    public Zeruel() {
+    }
+
     @Override
     public boolean moverse(int x, int y, int nx, int ny) {
         boolean valido = false;

@@ -19,6 +19,9 @@ public class Angel extends Ancestral {
     private String volar;
     private int potencia;
 
+    public Angel() {
+    }
+
     public Angel(String color, String descripcion, String sangre, int fecha, String nombre, String volar, int potencia) {
         this.color = color;
         this.descripcion = descripcion;

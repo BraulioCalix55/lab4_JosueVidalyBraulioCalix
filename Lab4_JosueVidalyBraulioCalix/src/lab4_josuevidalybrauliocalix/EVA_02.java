@@ -15,6 +15,9 @@ public class EVA_02 extends Evas {
         super(color, produccion, altura, alma, ojos, pais, piloto, codigo, dano);
     }
 
+    public EVA_02() {
+    }
+
     @Override
     public boolean moverse(int x, int y, int nx, int ny) {
         boolean valido = false;

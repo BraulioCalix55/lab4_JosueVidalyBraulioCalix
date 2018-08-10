@@ -11,6 +11,9 @@ package lab4_josuevidalybrauliocalix;
  */
 public class EVA_PM extends Evas {
 
+    public EVA_PM() {
+    }
+
     public EVA_PM(String color, int produccion, int altura, String alma, int ojos, String pais, Piloto piloto, int codigo, int dano) {
         super(color, produccion, altura, alma, ojos, pais, piloto, codigo, dano);
     }

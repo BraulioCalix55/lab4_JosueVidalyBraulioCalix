@@ -19,6 +19,9 @@ public class Piloto extends Ancestral {
     private int sincronizacion;
     private String eva;
 
+    public Piloto() {
+    }
+
     public Piloto(String nombre, int edad, String familiar, String encargado, String escuela, int sincronizacion, String eva) {
         this.nombre = nombre;
         this.edad = edad;

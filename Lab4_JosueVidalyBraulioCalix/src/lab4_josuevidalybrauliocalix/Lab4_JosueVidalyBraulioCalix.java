@@ -7,6 +7,7 @@ package lab4_josuevidalybrauliocalix;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -18,13 +19,14 @@ public class Lab4_JosueVidalyBraulioCalix {
      * @param args the command line arguments
      */
     static Scanner lea = new Scanner(System.in);
-
+    static Ancestral An;
     public static void main(String[] args) {
         // TODO code application logic here
 //CRUD ( CREATE , READ , UPDATE ,DELETE ) 
         int salir = 0;
         ArrayList p = new ArrayList();
         ArrayList<Angel> A = new ArrayList();
+        ArrayList<Evas> e = new ArrayList();
         while (salir != 5) {
             System.out.println("Bienvenido a Nerv\nOPCIONES"
                     + "\nELIGA UNA OPCION "
@@ -36,8 +38,31 @@ public class Lab4_JosueVidalyBraulioCalix {
             int Opc = lea.nextInt();
             switch (Opc) {
                 case 1:
+                    //private String color;private int produccion;private int altura;private String alma;
+                    //private int ojos;private String pais;private Piloto piloto;private int codigo;private int dano;
+                    Evas eva_00 = new Evas("azul", 12000, 2, "Braulio", 2, "Honduras", new Piloto(), 123, 900);
+                    Evas eva_01 = new Evas("morado", 9000, 3, "josue", 3, "portugal", new Piloto(), 99, 888);
+                    Evas eva_02 = new Evas("rojo", 9200, 3, "alexy", 4, "holanda", new Piloto(), 88, 950);
+                    Evas eva_pm = new Evas("amarillo", 8400, 2, "david", 2, "Honduras", new Piloto(), 99, 925);
+                    e.add(eva_pm);
+                    e.add(eva_00);
+                    e.add(eva_01);
+                    e.add(eva_02);
+                    for (Evas j : e) {
+                        System.out.println(j);
+                    }
                     break;
                 case 2:
+                    //String color, String descripcion, String sangre, int fecha, String nombre, String volar, int potencia
+                    Angel Ramiel = new Angel("blanco", "especial", "azul", 13, "ramiel", "no", 90);
+                    Angel sachile = new Angel("amarillo", "singular", "rojo", 28, "sachiel", "no", 88);
+                    Angel Zeruel = new Angel("morado", "especial", "morado", 21, "zeruel", "si", 91);
+                    A.add(Ramiel);
+                    A.add(sachile);
+                    A.add(Zeruel);
+                    for (Angel j : A) {
+                        System.out.println(j);
+                    }
                     break;
                 case 3://CRUD ( CREATE , READ , UPDATE ,DELETE )
 
@@ -105,14 +130,18 @@ public class Lab4_JosueVidalyBraulioCalix {
                                     break;
                                 case 5:
                                     System.out.println("ingrese escuela");
-                                    String NEscuela=lea.nextLine();
-                                     ((Piloto)p.get(Opc)).setEscuela(NEscuela);
+                                    String NEscuela = lea.nextLine();
+                                    ((Piloto) p.get(Opc)).setEscuela(NEscuela);
                                     break;
                                 case 6:
                                     System.out.println("ingrese sincroizacion");
+                                    int NSincro = lea.nextInt();
+                                    ((Piloto) p.get(Opc)).setSincronizacion(NSincro);
                                     break;
                                 case 7:
                                     System.out.println("ingrese eva asignada");
+                                    String Neva = lea.nextLine();
+                                    ((Piloto) p.get(Opc)).setEva(Neva);
                                     break;
                                 default:
                                     System.out.println("opcion invalida");
@@ -205,25 +234,35 @@ public class Lab4_JosueVidalyBraulioCalix {
         System.out.println("que desea hacer \n1)Moverse\n2)Atacar");
         int trab = lea.nextInt();
         System.out.println("selecciono Moverse");
+        
         if (trab == 1) {//MOVERSE
             if (Mat[x][y].equals("EV0")) {
+                An=new EVA_00();
                 System.out.println("ingrese la x a la  que lo quiere mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
                     System.out.println("numero invalido\ningrese otro");
                     xn = lea.nextInt();
                 }
+                
                 System.out.println("ingrese la y a la  que lo quiere mover");
                 int yn = lea.nextInt();
                 while (yn < 0 || yn > 9) {
                     System.out.println("numero invalido\ningrese otro");
                     yn = lea.nextInt();
                 }
+                boolean cosa=validarposi(xn, yn, Mat);
+                
+                if (cosa==true) {
+                   An.moverse(x, y, xn, yn);
+                }
+                
                 //poner metodo
                 //poner metodo
                 //poner metodo
                 //poner metodo
             } else if (Mat[x][y].equals("EV1")) {
+                An=new EVA_01();
                 System.out.println("ingrese la x al que se va a mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
@@ -236,11 +275,17 @@ public class Lab4_JosueVidalyBraulioCalix {
                     System.out.println("numero invalido\ningrese otro");
                     yn = lea.nextInt();
                 }
+                boolean cosa=validarposi(xn, yn, Mat);
+                if (cosa==true) {
+                    Mat[x][y]="   ";
+                    An.moverse(x, y, xn, yn);
+                }
                 //poner metodo
                 //poner metodo
                 //poner metodo
                 //poner metodo
             } else if (Mat[x][y].equals("EV2")) {
+                An=new EVA_02();
                 System.out.println("ingrese la x al que se va a mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
@@ -252,6 +297,11 @@ public class Lab4_JosueVidalyBraulioCalix {
                 while (yn < 0 || yn > 9) {
                     System.out.println("numero invalido\ningrese otro");
                     yn = lea.nextInt();
+                }
+                boolean cosa=validarposi(xn, yn, Mat);
+                if (cosa==true) {
+                    Mat[x][y]="   ";
+                    An.moverse(x, y, xn, yn);
                 }
                 //poner metodo
                 //poner metodo
@@ -269,6 +319,11 @@ public class Lab4_JosueVidalyBraulioCalix {
                 while (yn < 0 || yn > 9) {
                     System.out.println("numero invalido\ningrese otro");
                     yn = lea.nextInt();
+                }
+                boolean cosa=validarposi(xn, yn, Mat);
+                if (cosa==true) {
+                    Mat[x][y]="   ";
+                    Mat[xn][yn]=" R ";
                 }
                 //poner metodo
                 //poner metodo
@@ -291,6 +346,11 @@ public class Lab4_JosueVidalyBraulioCalix {
                 //poner metodo
                 //poner metodo
                 //poner metodo
+                boolean cosa=validarposi(xn, yn, Mat);
+                if (cosa==true) {
+                    Mat[x][y]="   ";
+                    Mat[xn][yn]=" S ";
+                }
             } else if (Mat[x][y].equals(" Z ")) {
                 System.out.println("ingrese la x  al que se va a mover");
                 int xn = lea.nextInt();
@@ -303,6 +363,10 @@ public class Lab4_JosueVidalyBraulioCalix {
                 while (yn < 0 || yn > 9) {
                     System.out.println("numero invalido\ningrese otro");
                     yn = lea.nextInt();
+                }
+                boolean cosa=validarposi(xn, yn, Mat);
+                if (cosa==true) {
+                    
                 }
             }
         } else {//ATACAR
@@ -632,5 +696,13 @@ public class Lab4_JosueVidalyBraulioCalix {
                 }
             }
         }
+    }
+
+    public static boolean validarposi(int x, int y, String[][] Mat) {
+        boolean valida = false;
+        if (Mat[x][y].equals("   ")) {
+            valida = true;
+        }
+        return valida;
     }
 }
