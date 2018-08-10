@@ -9,6 +9,9 @@ package lab4_josuevidalybrauliocalix;
  *
  * @author josue
  */
-public class Ancestral {
-    
+public abstract class Ancestral {
+
+    public abstract void moverse();
+
+    public abstract void atacar();
 }

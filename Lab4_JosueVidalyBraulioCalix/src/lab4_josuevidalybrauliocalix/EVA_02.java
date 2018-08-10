@@ -9,6 +9,19 @@ package lab4_josuevidalybrauliocalix;
  *
  * @author josue
  */
-public class EVA_02 {
-    
+public class EVA_02 extends Evas {
+
+    public EVA_02(String color, int produccion, int altura, String alma, int ojos, String pais, Piloto piloto, int codigo, int dano) {
+        super(color, produccion, altura, alma, ojos, pais, piloto, codigo, dano);
+    }
+
+    @Override
+    public void moverse() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void atacar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
