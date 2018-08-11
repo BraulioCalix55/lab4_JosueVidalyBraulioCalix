@@ -26,32 +26,32 @@ public class EVA_PM extends Evas {
 
     @Override
     public boolean atacar(int x, int y, int ax, int ay) {
-        boolean valido = false;
+        boolean atacar = false;
 
         if (ax == x + 1 && ay == y + 1) {
-            valido = true;
+            atacar = true;
         }
         if (ax == x - 1 && ay == y - 1) {
-            valido = true;
+            atacar = true;
         }
         if (ax == x + 1 && ay == y - 1) {
-            valido = true;
+            atacar = true;
         }
         if (ax == x - 1 && ay == y + 1) {
-            valido = true;
+            atacar = true;
         }
         if (ax == x + 1) {
-            valido = true;
+            atacar = true;
         }
         if (ax == x - 1) {
-            valido = true;
+            atacar = true;
         }
         if (ay == y + 1) {
-            valido = true;
+            atacar = true;
         }
         if (ay == y - 1) {
-            valido = true;
+            atacar = true;
         }
-        return valido;
+        return atacar;
     }
 }

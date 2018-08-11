@@ -38,6 +38,15 @@ public class Sachiel extends Angel {
 
     @Override
     public boolean atacar(int x, int y, int ax, int ay) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.   
+        boolean atacar = false;
+        if (ax == x && ay >= y - 3) {
+            atacar = true;
+        }
+        if (ax == x && ay == y + 3) {
+            atacar = true;
+        }
+
+        return atacar;
+
     }
 }

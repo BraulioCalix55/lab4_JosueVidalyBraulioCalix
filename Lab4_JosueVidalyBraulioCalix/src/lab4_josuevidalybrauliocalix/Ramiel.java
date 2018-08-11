@@ -50,6 +50,21 @@ public class Ramiel extends Angel {
 
     @Override
     public boolean atacar(int x, int y, int ax, int ay) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean atacar;
+        boolean t = false;
+        if ((ax == x + 2 || ax == x - 2) && ay >= y - 2 && ay == y + 2) {
+            t = true;
+        }
+        if ((ay == y + 2 || ay == y - 2) && ax >= x - 2 && ax == x + 2) {
+            t = true;
+        }
+        if ((ax == x + 1 || x == x - 1) && y >= y - 1 && y == y + 1) {
+            t = true;
+        }
+        if ((ay == y + 1 || ay == y - 1) && ax >= x - 1 && ax == x + 1) {
+            t = true;
+        }
+        return t;
+
     }
 }

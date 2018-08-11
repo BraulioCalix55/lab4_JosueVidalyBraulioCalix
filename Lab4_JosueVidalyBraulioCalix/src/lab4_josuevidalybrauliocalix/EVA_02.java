@@ -50,7 +50,32 @@ public class EVA_02 extends Evas {
     }
 
     @Override
-    public boolean atacar(int x,int y,int ax,int ay) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean atacar(int x, int y, int ax, int ay) {
+        boolean atacar = false;
+        if (ax == x - 1 && ay == y) {
+            atacar = true;
+        }
+        if (ax == x - 2 && ay == y) {
+            atacar = true;
+        }
+        if (ax == x - 1 && ay == y - 1) {
+            atacar = true;
+        }
+        if (ax == x - 2 && ay == y - 2) {
+            atacar = true;
+        }
+        if (ax == x - 1 && ay == y + 1) {
+            atacar = true;
+        }
+        if (ax == x - 2 && ay == y + 2) {
+            atacar = true;
+        }
+        if (ax == x - 2 && ay == y - 1) {
+            atacar = true;
+        }
+        if (ax == x - 2 && ay == y + 1) {
+            atacar = true;
+        }
+        return atacar;
     }
 }

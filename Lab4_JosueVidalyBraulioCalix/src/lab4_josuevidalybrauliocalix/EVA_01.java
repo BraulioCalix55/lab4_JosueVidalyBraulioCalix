@@ -14,8 +14,6 @@ public class EVA_01 extends Evas {
     public EVA_01(String color, int produccion, int altura, String alma, int ojos, String pais, Piloto piloto, int codigo, int dano) {
         super(color, produccion, altura, alma, ojos, pais, piloto, codigo, dano);
     }
-   
-            
 
     public EVA_01() {
     }
@@ -105,7 +103,22 @@ public class EVA_01 extends Evas {
     }
 
     @Override
-    public boolean atacar(int x,int y,int ax,int ay) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean atacar(int x, int y, int ax, int ay) {
+
+        boolean atacar = false;
+        if (ax == x) {
+            atacar = true;
+        }
+        if (ax <= x + 2) {
+            atacar = true;
+        }
+        if (ay <= y + 2) {
+            atacar = true;
+        }
+        if (ay >= y - 2) {
+            atacar = true;
+        }
+
+        return atacar;
     }
 }
