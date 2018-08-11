@@ -7,7 +7,6 @@ package lab4_josuevidalybrauliocalix;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import javafx.scene.paint.Color;
 
 /**
  *
@@ -18,6 +17,16 @@ public class Lab4_JosueVidalyBraulioCalix {
     /**
      * @param args the command line arguments
      */
+    static int jug1 = 8;
+    static int jug2 = 8;
+    static int eva0 = 5;
+    static int eva1 = 5;
+    static int eva2 = 5;
+    static int pm = 5;
+    static int R = 5;
+    static int Z = 5;
+    static int S = 5;
+
     static Scanner lea = new Scanner(System.in);
     static Ancestral An;
 
@@ -71,7 +80,8 @@ public class Lab4_JosueVidalyBraulioCalix {
                             + "\n1)crear un piloto"
                             + "\n2)listar pilotos"
                             + "\n3)modificar un piloto"
-                            + "\n4)borrar un piloto");
+                            + "\n4)borrar un piloto"
+                            + "\n5)regresar");
                     int Tpilo = lea.nextInt();
                     switch (Tpilo) {
                         case 1:
@@ -167,10 +177,18 @@ public class Lab4_JosueVidalyBraulioCalix {
                         if (turno == 1) {
                             JUg1(Mat);
                             turno++;
+                            if (jug2 == 0) {
+                                vivo = false;
+                            }
+                            imprimat(Mat);
                         } else if (turno == 2) {
                             JUg2(Mat);
                             turno--;
                             //ingresar metodos
+                            if (jug1 == 0) {
+                                vivo = false;
+                            }
+                            imprimat(Mat);
                         }
                     }
                     break;
@@ -178,7 +196,6 @@ public class Lab4_JosueVidalyBraulioCalix {
                     break;
 
             }
-
         }
     }
 
@@ -218,6 +235,7 @@ public class Lab4_JosueVidalyBraulioCalix {
     }
 
     public static void JUg1(String[][] Mat) {
+
         System.out.println("jugador 1");
 
         System.out.println("ingrese la x");
@@ -237,8 +255,8 @@ public class Lab4_JosueVidalyBraulioCalix {
         System.out.println("selecciono Moverse");
 
         if (trab == 1) {//MOVERSE
-            if (Mat[x][y].equals("EV0")) {
-                An = new EVA_00();
+            if (Mat[x][y].equals(" R ")) {
+                An = new Ramiel();
                 System.out.println("ingrese la x a la  que lo quiere mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
@@ -255,15 +273,20 @@ public class Lab4_JosueVidalyBraulioCalix {
                 boolean cosa = validarposi(xn, yn, Mat);
 
                 if (cosa == true) {
-                    An.moverse(x, y, xn, yn);
+
+                    boolean puede = An.moverse(x, y, xn, yn);
+                    if (puede == true) {
+                        Mat[xn][yn] = " R ";
+                        Mat[x][y] = "   ";
+                    }
                 }
 
                 //poner metodo
                 //poner metodo
                 //poner metodo
                 //poner metodo
-            } else if (Mat[x][y].equals("EV1")) {
-                An = new EVA_01();
+            } else if (Mat[x][y].equals(" S ")) {
+                An = new Sachiel();
                 System.out.println("ingrese la x al que se va a mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
@@ -278,15 +301,19 @@ public class Lab4_JosueVidalyBraulioCalix {
                 }
                 boolean cosa = validarposi(xn, yn, Mat);
                 if (cosa == true) {
-                    Mat[x][y] = "   ";
-                    An.moverse(x, y, xn, yn);
+
+                    boolean puede = An.moverse(x, y, xn, yn);
+                    if (puede == true) {
+                        Mat[xn][yn] = " S ";
+                        Mat[x][y] = "   ";
+                    }
                 }
                 //poner metodo
                 //poner metodo
                 //poner metodo
                 //poner metodo
-            } else if (Mat[x][y].equals("EV2")) {
-                An = new EVA_02();
+            } else if (Mat[x][y].equals(" Z ")) {
+                An = new Zeruel();
                 System.out.println("ingrese la x al que se va a mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
@@ -301,85 +328,23 @@ public class Lab4_JosueVidalyBraulioCalix {
                 }
                 boolean cosa = validarposi(xn, yn, Mat);
                 if (cosa == true) {
-                    Mat[x][y] = "   ";
-                    An.moverse(x, y, xn, yn);
-                }
-                //poner metodo
-                //poner metodo
-                //poner metodo
-                //poner metodo
-            } else if (Mat[x][y].equals(" R ")) {
-                An = new Ramiel();
-                System.out.println("ingrese la x  al que se va a mover");
-                int xn = lea.nextInt();
-                while (xn < 0 || xn > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    xn = lea.nextInt();
-                }
-                System.out.println("ingrese la y al que ataca");
-                int yn = lea.nextInt();
-                while (yn < 0 || yn > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    yn = lea.nextInt();
-                }
-                boolean cosa = validarposi(xn, yn, Mat);
-                if (cosa == true) {
-                    Mat[x][y] = "   ";
-                    An.moverse(x, y, xn, yn);
 
+                    boolean puede = An.moverse(x, y, xn, yn);
+                    if (puede == true) {
+                        Mat[xn][yn] = " Z ";
+                        Mat[x][y] = "   ";
+                    }
                 }
                 //poner metodo
                 //poner metodo
                 //poner metodo
                 //poner metodo
-            } else if (Mat[x][y].equals(" S ")) {
-                An = new Sachiel();
-                System.out.println("ingrese la x  al que se va a mover");
-                int xn = lea.nextInt();
-                while (xn < 0 || xn > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    xn = lea.nextInt();
-                }
-                System.out.println("ingrese la y  al que se va a mover");
-                int yn = lea.nextInt();
-                while (yn < 0 || yn > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    yn = lea.nextInt();
-                }
-                //poner metodo
-                //poner metodo
-                //poner metodo
-                //poner metodo
-                boolean cosa = validarposi(xn, yn, Mat);
-                if (cosa == true) {
-                    Mat[x][y] = "   ";
-                    An.moverse(x, y, xn, yn);
-
-                }
-            } else if (Mat[x][y].equals(" Z ")) {
-                An = new Zeruel();
-                System.out.println("ingrese la x  al que se va a mover");
-                int xn = lea.nextInt();
-                while (xn < 0 || xn > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    xn = lea.nextInt();
-                }
-                System.out.println("ingrese la y  al que se va a mover");
-                int yn = lea.nextInt();
-                while (yn < 0 || yn > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    yn = lea.nextInt();
-                }
-                boolean cosa = validarposi(xn, yn, Mat);
-                if (cosa == true) {
-                    Mat[x][y] = "   ";
-                    An.moverse(x, y, xn, yn);
-                }
             }
         } else {//ATACAR
             System.out.println("eligio Atacar");
 
-            if (Mat[x][y].equals("EV0")) {
+            if (Mat[x][y].equals(" R ")) {
+                An = new Ramiel();
                 System.out.println("ingrese la x ");
                 int ax = lea.nextInt();
                 while (ax < 0 || ax > 9) {
@@ -392,56 +357,43 @@ public class Lab4_JosueVidalyBraulioCalix {
                     System.out.println("numero invalido\ningrese otro");
                     ay = lea.nextInt();
                 }
-                //poner metodo
-                //poner metodo
-                //poner metodo
-                //poner metodo
-            } else if (Mat[x][y].equals("EV1")) {
-                System.out.println("ingrese la x del que quiere atacar");
-                int ax = lea.nextInt();
-                while (ax < 0 || ax > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    ax = lea.nextInt();
-                }
-                System.out.println("ingrese la y del que quiere atacar");
-                int ay = lea.nextInt();
-                while (ay < 0 || ay > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    ay = lea.nextInt();
-                }
-                //poner metodo
-                //poner metodo
-                //poner metodo
-                //poner metodo
-            } else if (Mat[x][y].equals("EV2")) {
-                System.out.println("ingrese la x del que quiere atacar");
-                int ax = lea.nextInt();
-                while (ax < 0 || ax > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    ax = lea.nextInt();
-                }
-                System.out.println("ingrese la y del que quiere atacar");
-                int ay = lea.nextInt();
-                while (ay < 0 || ay > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    ay = lea.nextInt();
-                }
-                //poner metodo
-                //poner metodo
-                //poner metodo
-                //poner metodo
-            } else if (Mat[x][y].equals(" R ")) {
-                System.out.println("ingrese la x del que quiere atacar");
-                int ax = lea.nextInt();
-                while (ax < 0 || ax > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    ax = lea.nextInt();
-                }
-                System.out.println("ingrese la y del que quiere atacar");
-                int ay = lea.nextInt();
-                while (ay < 0 || ay > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    ay = lea.nextInt();
+                //static int eva0 = 5;
+                //static int eva1 = 5;
+                //static int eva2 = 5;
+                //static int pm = 5;
+                //static int R = 5;
+                //static int Z = 5;
+                //static int S = 5;
+                boolean atak = An.atacar(x, y, ax, ay);
+                if (atak == true) {
+                    if (Mat[ax][ay].contains(" PM")) {
+                        pm--;
+
+                    }
+                    if (Mat[ax][ay].contains("EV0")) {
+                        eva0--;
+                    }
+                    if (Mat[ax][ay].contains("EV1")) {
+                        eva1--;
+                    }
+                    if (Mat[ax][ay].contains("EV2")) {
+                        eva2--;
+                    }
+                    if (pm == 0) {
+                        Mat[ax][ay] = "   ";
+                    }
+                    if (eva0 == 0) {
+                        Mat[ax][ay] = "   ";
+
+                    }
+                    if (eva1 == 0) {
+                        Mat[ax][ay] = "   ";
+
+                    }
+                    if (eva2 == 0) {
+                        Mat[ax][ay] = "   ";
+
+                    }
                 }
                 //poner metodo
                 //poner metodo
@@ -460,6 +412,37 @@ public class Lab4_JosueVidalyBraulioCalix {
                     System.out.println("numero invalido\ningrese otro");
                     ay = lea.nextInt();
                 }
+                boolean atak = An.atacar(x, y, ax, ay);
+                if (atak == true) {
+                    if (Mat[ax][ay].contains(" PM")) {
+                        pm--;
+
+                    }
+                    if (Mat[ax][ay].contains("EV0")) {
+                        eva0--;
+                    }
+                    if (Mat[ax][ay].contains("EV1")) {
+                        eva1--;
+                    }
+                    if (Mat[ax][ay].contains("EV2")) {
+                        eva2--;
+                    }
+                    if (pm == 0) {
+                        Mat[ax][ay] = "   ";
+                    }
+                    if (eva0 == 0) {
+                        Mat[ax][ay] = "   ";
+
+                    }
+                    if (eva1 == 0) {
+                        Mat[ax][ay] = "   ";
+
+                    }
+                    if (eva2 == 0) {
+                        Mat[ax][ay] = "   ";
+
+                    }
+                }
                 //poner metodo
                 //poner metodo
                 //poner metodo
@@ -477,6 +460,41 @@ public class Lab4_JosueVidalyBraulioCalix {
                     System.out.println("numero invalido\ningrese otro");
                     ay = lea.nextInt();
                 }
+                boolean atak = An.atacar(x, y, ax, ay);
+                if (atak == true) {
+                    if (Mat[ax][ay].contains(" PM")) {
+                        pm--;
+
+                    }
+                    if (Mat[ax][ay].contains("EV0")) {
+                        eva0--;
+                    }
+                    if (Mat[ax][ay].contains("EV1")) {
+                        eva1--;
+                    }
+                    if (Mat[ax][ay].contains("EV2")) {
+                        eva2--;
+                    }
+                    if (pm == 0) {
+                        Mat[ax][ay] = "   ";
+                    }
+                    if (eva0 == 0) {
+                        Mat[ax][ay] = "   ";
+
+                    }
+                    if (eva1 == 0) {
+                        Mat[ax][ay] = "   ";
+
+                    }
+                    if (eva2 == 0) {
+                        Mat[ax][ay] = "   ";
+
+                    }
+                }
+                //poner metodo
+                //poner metodo
+                //poner metodo
+                //poner metodo
             }
         }
 
@@ -502,23 +520,36 @@ public class Lab4_JosueVidalyBraulioCalix {
         System.out.println("selecciono Moverse");
         if (trab == 1) {//MOVERSE
             if (Mat[x][y].equals("EV0")) {
+                An = new EVA_00();
                 System.out.println("ingrese la x a la  que lo quiere mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
                     System.out.println("numero invalido\ningrese otro");
                     xn = lea.nextInt();
                 }
+
                 System.out.println("ingrese la y a la  que lo quiere mover");
                 int yn = lea.nextInt();
                 while (yn < 0 || yn > 9) {
                     System.out.println("numero invalido\ningrese otro");
                     yn = lea.nextInt();
                 }
+                boolean cosa = validarposi(xn, yn, Mat);
+
+                if (cosa == true) {
+                    Mat[x][y] = "   ";
+                    boolean puede = An.moverse(x, y, xn, yn);
+                    if (puede == true) {
+                        Mat[xn][yn] = "EV0";
+                    }
+                }
+
                 //poner metodo
                 //poner metodo
                 //poner metodo
                 //poner metodo
             } else if (Mat[x][y].equals("EV1")) {
+                An = new EVA_01();
                 System.out.println("ingrese la x al que se va a mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
@@ -531,11 +562,20 @@ public class Lab4_JosueVidalyBraulioCalix {
                     System.out.println("numero invalido\ningrese otro");
                     yn = lea.nextInt();
                 }
+                boolean cosa = validarposi(xn, yn, Mat);
+                if (cosa == true) {
+                    boolean puede = An.moverse(x, y, xn, yn);
+                    if (puede == true) {
+                        Mat[x][y] = "   ";
+                        Mat[xn][yn] = "EV1";
+                    }
+                }
                 //poner metodo
                 //poner metodo
                 //poner metodo
                 //poner metodo
             } else if (Mat[x][y].equals("EV2")) {
+                An = new EVA_02();
                 System.out.println("ingrese la x al que se va a mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
@@ -548,11 +588,20 @@ public class Lab4_JosueVidalyBraulioCalix {
                     System.out.println("numero invalido\ningrese otro");
                     yn = lea.nextInt();
                 }
+                boolean cosa = validarposi(xn, yn, Mat);
+                if (cosa == true) {
+                    Mat[x][y] = "   ";
+                    boolean puede = An.moverse(x, y, xn, yn);
+                    if (puede == true) {
+                        Mat[xn][yn] = "EV2";
+                    }
+                }
                 //poner metodo
                 //poner metodo
                 //poner metodo
                 //poner metodo
-            } else if (Mat[x][y].equals(" R ")) {
+            } else if (Mat[x][y].equals(" PM")) {
+                An = new Ramiel();
                 System.out.println("ingrese la x  al que se va a mover");
                 int xn = lea.nextInt();
                 while (xn < 0 || xn > 9) {
@@ -565,44 +614,22 @@ public class Lab4_JosueVidalyBraulioCalix {
                     System.out.println("numero invalido\ningrese otro");
                     yn = lea.nextInt();
                 }
-                //poner metodo
-                //poner metodo
-                //poner metodo
-                //poner metodo
-            } else if (Mat[x][y].equals(" S ")) {
-                System.out.println("ingrese la x  al que se va a mover");
-                int xn = lea.nextInt();
-                while (xn < 0 || xn > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    xn = lea.nextInt();
-                }
-                System.out.println("ingrese la y  al que se va a mover");
-                int yn = lea.nextInt();
-                while (yn < 0 || yn > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    yn = lea.nextInt();
+                boolean cosa = validarposi(xn, yn, Mat);
+                if (cosa == true) {
+
+                    boolean puede = An.moverse(x, y, xn, yn);
+                    if (puede == true) {
+                        Mat[x][y] = "   ";
+                        Mat[xn][yn] = " PM";
+                    }
                 }
                 //poner metodo
                 //poner metodo
                 //poner metodo
                 //poner metodo
-            } else if (Mat[x][y].equals(" Z ")) {
-                System.out.println("ingrese la x  al que se va a mover");
-                int xn = lea.nextInt();
-                while (xn < 0 || xn > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    xn = lea.nextInt();
-                }
-                System.out.println("ingrese la y  al que se va a mover");
-                int yn = lea.nextInt();
-                while (yn < 0 || yn > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    yn = lea.nextInt();
-                }
             }
         } else {//ATACAR
             System.out.println("eligio Atacar");
-
             if (Mat[x][y].equals("EV0")) {
                 System.out.println("ingrese la x ");
                 int ax = lea.nextInt();
@@ -620,6 +647,28 @@ public class Lab4_JosueVidalyBraulioCalix {
                 //poner metodo
                 //poner metodo
                 //poner metodo
+                boolean atak = An.atacar(x, y, ax, ay);
+                if (atak == true) {
+                    if (Mat[ax][ay].contains(" R ")) {
+                        R--;
+
+                    }
+                    if (Mat[ax][ay].contains(" S ")) {
+                        S--;
+                    }
+                    if (Mat[ax][ay].contains(" Z ")) {
+                        Z--;
+                    }
+                    if (R == 0) {
+                        Mat[ax][ay] = "   ";
+                    }
+                    if (S == 0) {
+                        Mat[ax][ay] = "   ";
+                    }
+                    if (Z == 0) {
+                        Mat[ax][ay] = "   ";
+                    }
+                }
             } else if (Mat[x][y].equals("EV1")) {
                 System.out.println("ingrese la x del que quiere atacar");
                 int ax = lea.nextInt();
@@ -633,6 +682,29 @@ public class Lab4_JosueVidalyBraulioCalix {
                     System.out.println("numero invalido\ningrese otro");
                     ay = lea.nextInt();
                 }
+                boolean atak = An.atacar(x, y, ax, ay);
+                if (atak == true) {
+                    if (Mat[ax][ay].contains(" R ")) {
+                        R--;
+
+                    }
+                    if (Mat[ax][ay].contains(" S ")) {
+                        S--;
+                    }
+                    if (Mat[ax][ay].contains(" Z ")) {
+                        Z--;
+                    }
+                    if (R == 0) {
+                        Mat[ax][ay] = "   ";
+                    }
+                    if (S == 0) {
+                        Mat[ax][ay] = "   ";
+                    }
+                    if (Z == 0) {
+                        Mat[ax][ay] = "   ";
+                    }
+                }
+
                 //poner metodo
                 //poner metodo
                 //poner metodo
@@ -650,11 +722,33 @@ public class Lab4_JosueVidalyBraulioCalix {
                     System.out.println("numero invalido\ningrese otro");
                     ay = lea.nextInt();
                 }
+                boolean atak = An.atacar(x, y, ax, ay);
+                if (atak == true) {
+                    if (Mat[ax][ay].contains(" R ")) {
+                        R--;
+
+                    }
+                    if (Mat[ax][ay].contains(" S ")) {
+                        S--;
+                    }
+                    if (Mat[ax][ay].contains(" Z ")) {
+                        Z--;
+                    }
+                    if (R == 0) {
+                        Mat[ax][ay] = "   ";
+                    }
+                    if (S == 0) {
+                        Mat[ax][ay] = "   ";
+                    }
+                    if (Z == 0) {
+                        Mat[ax][ay] = "   ";
+                    }
+                }
                 //poner metodo
                 //poner metodo
                 //poner metodo
                 //poner metodo
-            } else if (Mat[x][y].equals(" R ")) {
+            } else if (Mat[x][y].equals(" PM")) {
                 System.out.println("ingrese la x del que quiere atacar");
                 int ax = lea.nextInt();
                 while (ax < 0 || ax > 9) {
@@ -671,36 +765,6 @@ public class Lab4_JosueVidalyBraulioCalix {
                 //poner metodo
                 //poner metodo
                 //poner metodo
-            } else if (Mat[x][y].equals(" S ")) {
-                System.out.println("ingrese la x del que quiere atacar");
-                int ax = lea.nextInt();
-                while (ax < 0 || ax > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    ax = lea.nextInt();
-                }
-                System.out.println("ingrese la y del que quiere atacar");
-                int ay = lea.nextInt();
-                while (ay < 0 || ay > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    ay = lea.nextInt();
-                }
-                //poner metodo
-                //poner metodo
-                //poner metodo
-                //poner metodo
-            } else if (Mat[x][y].equals(" Z ")) {
-                System.out.println("ingrese la x del que quiere atacar");
-                int ax = lea.nextInt();
-                while (ax < 0 || ax > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    ax = lea.nextInt();
-                }
-                System.out.println("ingrese la y del que quiere atacar");
-                int ay = lea.nextInt();
-                while (ay < 0 || ay > 9) {
-                    System.out.println("numero invalido\ningrese otro");
-                    ay = lea.nextInt();
-                }
             }
         }
     }
