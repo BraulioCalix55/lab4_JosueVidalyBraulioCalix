@@ -36,6 +36,7 @@ public class Lab4_JosueVidalyBraulioCalix {
             int Opc = lea.nextInt();
             switch (Opc) {
                 case 1:
+                    
                     break;
                 case 2:
                     break;

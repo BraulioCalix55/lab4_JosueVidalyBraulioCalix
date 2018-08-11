@@ -11,7 +11,7 @@ package lab4_josuevidalybrauliocalix;
  */
 public abstract class Ancestral {
 
-    public abstract boolean moverse(int x,int y,int nx,int ny);
+    public abstract boolean moverse(int x, int y, int nx, int ny);
 
-    public abstract void atacar();
+    public abstract boolean atacar(int x, int y, int ax, int ay);
 }

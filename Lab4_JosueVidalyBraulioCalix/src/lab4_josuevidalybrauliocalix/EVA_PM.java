@@ -22,7 +22,33 @@ public class EVA_PM extends Evas {
     }
 
     @Override
-    public void atacar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean atacar(int x, int y, int ax, int ay) {
+        boolean valido = false;
+
+        if (ax == x + 1 && ay == y + 1) {
+            valido = true;
+        }
+        if (ax == x - 1 && ay == y - 1) {
+            valido = true;
+        }
+        if (ax == x + 1 && ay == y - 1) {
+            valido = true;
+        }
+        if (ax == x - 1 && ay == y + 1) {
+            valido = true;
+        }
+        if (ax == x + 1) {
+            valido = true;
+        }
+        if (ax == x - 1) {
+            valido = true;
+        }
+        if (ay == y + 1) {
+            valido = true;
+        }
+        if (ay == y - 1) {
+            valido = true;
+        }
+        return valido;
     }
 }

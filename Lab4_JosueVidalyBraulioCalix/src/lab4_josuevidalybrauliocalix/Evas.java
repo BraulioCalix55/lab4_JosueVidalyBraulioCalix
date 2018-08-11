@@ -21,6 +21,8 @@ public class Evas extends Ancestral {
     private int codigo;
     private int dano;
 
+   
+
     public Evas(String color, int produccion, int altura, String alma, int ojos, String pais, Piloto piloto, int codigo, int dano) {
         this.color = color;
         this.produccion = produccion;
@@ -116,7 +118,7 @@ public class Evas extends Ancestral {
     }
 
     @Override
-    public void atacar() {
+    public boolean atacar(int x, int y, int ax, int ay) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
